@@ -1,0 +1,6 @@
+{
+  "name": "Serviceku - Jasa Service Elektronik Profesional",
+  "description": "Layanan perbaikan AC, Kulkas, Mesin Cuci, Showcase, Freezer Box & Dispenser panggilan teknisi cepat di Indramayu, Cirebon, & Majalengka.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

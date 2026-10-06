@@ -1,0 +1,190 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <!-- Blue circular arc gradient -->
+    <linearGradient id="skArcGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0288D1" />
+      <stop offset="40%" stop-color="#0277BD" />
+      <stop offset="100%" stop-color="#0D47A1" />
+    </linearGradient>
+    
+    <!-- Snowflake blue gradient -->
+    <linearGradient id="skSnowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#29B6F6" />
+      <stop offset="100%" stop-color="#0288D1" />
+    </linearGradient>
+
+    <!-- Dark mechanical gear gradient -->
+    <linearGradient id="skGearGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#263238" />
+      <stop offset="100%" stop-color="#101820" />
+    </linearGradient>
+
+    <!-- Waves gradient -->
+    <linearGradient id="skWaveGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0288D1" />
+      <stop offset="60%" stop-color="#0D47A1" />
+      <stop offset="100%" stop-color="#0A3875" />
+    </linearGradient>
+    
+    <linearGradient id="skWaveGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#03A9F4" />
+      <stop offset="50%" stop-color="#0277BD" />
+      <stop offset="100%" stop-color="#0D47A1" />
+    </linearGradient>
+  </defs>
+
+  <!-- 1. CIRCULAR BLUE ARC (FRAME) -->
+  <path d="M 120 250 A 140 140 0 1 1 380 220" 
+        fill="none" 
+        stroke="url(#skArcGrad)" 
+        stroke-width="18" 
+        stroke-linecap="round" />
+
+  <!-- 2. DARK MECHANICAL GEAR (RIGHT SIDE) -->
+  <g transform="translate(275, 230)">
+    <path d="
+      M 75 -22 L 92 -18 L 90 4 L 73 0
+      A 75 75 0 0 1 66 30
+      L 82 42 L 71 60 L 54 49
+      A 75 75 0 0 1 30 71
+      L 36 90 L 16 97 L 9 77
+      A 75 75 0 0 1 -21 77
+      L -27 97 L -47 90 L -41 70
+      A 75 75 0 0 1 -63 50
+      L -82 60 L -91 42 L -74 31
+      A 75 75 0 0 1 -77 0
+      L -94 4 L -96 -18 L -79 -22
+      A 75 75 0 0 1 -74 -51
+      L -91 -62 L -82 -80 L -63 -71
+      A 75 75 0 0 1 -41 -90
+      L -47 -109 L -27 -117 L -21 -98
+      A 75 75 0 0 1 9 -98
+      L 16 -117 L 36 -109 L 30 -90
+      A 75 75 0 0 1 54 -71
+      L 71 -80 L 82 -62 L 66 -51
+      A 75 75 0 0 1 73 -22 Z
+    " fill="url(#skGearGrad)" />
+    <!-- Gear axle hole with white border ring -->
+    <circle cx="0" cy="0" r="34" fill="#ffffff" />
+    <circle cx="0" cy="0" r="28" fill="#1A2530" />
+    <circle cx="0" cy="0" r="16" fill="#ffffff" />
+  </g>
+
+  <!-- 3. BLUE SNOWFLAKE (PENDINGIN / AC / KULKAS) -->
+  <g transform="translate(195, 175)" stroke="url(#skSnowGrad)" stroke-width="7.5" stroke-linecap="round" fill="none">
+    <!-- 3 Main Diametral Lines -->
+    <line x1="0" y1="-62" x2="0" y2="62" />
+    <line x1="-54" y1="-31" x2="54" y2="31" />
+    <line x1="-54" y1="31" x2="54" y2="-31" />
+
+    <!-- Vertical Branch V-Chevrons -->
+    <path d="M -15 -42 L 0 -27 L 15 -42" />
+    <path d="M -11 -55 L 0 -47 L 11 -55" />
+    <path d="M -15 42 L 0 27 L 15 42" />
+    <path d="M -11 55 L 0 47 L 11 55" />
+
+    <!-- Top-Right to Bottom-Left V-Chevrons -->
+    <path d="M 40 -11 L 24 -14 L 28 -30" />
+    <path d="M 51 -22 L 42 -25 L 45 -35" />
+    <path d="M -40 11 L -24 14 L -28 30" />
+    <path d="M -51 22 L -42 25 L -45 35" />
+
+    <!-- Top-Left to Bottom-Right V-Chevrons -->
+    <path d="M -40 -11 L -24 -14 L -28 -30" />
+    <path d="M -51 -22 L -42 -25 L -45 -35" />
+    <path d="M 40 11 L 24 14 L 28 30" />
+    <path d="M 51 22 L 42 25 L 45 35" />
+
+    <!-- Center hexagon bead -->
+    <circle cx="0" cy="0" r="6.5" fill="#0288D1" stroke="none" />
+  </g>
+
+  <!-- 4. DIAGONAL MECHANICAL WRENCH (KUNCI PAS) -->
+  <g transform="translate(280, 205) rotate(-38)">
+    <!-- Wrench Outer Handle with white outline separation -->
+    <rect x="-14" y="-125" width="28" height="155" rx="7" fill="#101820" stroke="#ffffff" stroke-width="5" />
+    
+    <!-- White center slot inside handle (iconic wrench detail) -->
+    <rect x="-4" y="-85" width="8" height="85" rx="4" fill="#ffffff" opacity="0.95" />
+
+    <!-- Open Jaw Head (Top Right) with white contour -->
+    <path d="
+      M -30 -115 
+      C -36 -142 -16 -172 0 -172 
+      C 16 -172 36 -142 30 -115 
+      L 15 -120 
+      L 11 -145 
+      L -11 -145 
+      L -15 -120 
+      Z
+    " fill="#101820" stroke="#ffffff" stroke-width="5" stroke-linejoin="round" />
+
+    <!-- Bottom Grip Ring -->
+    <circle cx="0" cy="32" r="19" fill="#101820" stroke="#ffffff" stroke-width="5" />
+    <circle cx="0" cy="32" r="8.5" fill="#ffffff" />
+  </g>
+
+  <!-- 5. DYNAMIC FLOWING BLUE WAVES (UNDER EMBLEM) -->
+  <g>
+    <!-- Upper Swoosh Wave -->
+    <path d="
+      M 70 330 
+      C 145 285, 230 340, 310 315 
+      C 370 295, 415 285, 440 286 
+      C 390 322, 320 350, 245 338 
+      C 175 328, 120 348, 70 330 Z
+    " fill="url(#skWaveGrad1)" />
+
+    <!-- Lower Accent Wave -->
+    <path d="
+      M 100 345 
+      C 165 315, 240 352, 315 334 
+      C 360 324, 400 310, 422 302 
+      C 378 336, 324 358, 255 352 
+      C 190 347, 140 360, 100 345 Z
+    " fill="url(#skWaveGrad2)" />
+  </g>
+
+  <!-- 6. TYPOGRAPHY: "Serviceku" -->
+  <text x="250" y="405" 
+        text-anchor="middle" 
+        font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" 
+        font-size="64" 
+        font-weight="900" 
+        font-style="italic" 
+        fill="#0D47A1" 
+        letter-spacing="-1.5">
+    Serviceku
+  </text>
+
+  <!-- 7. CENTER BANNER: "ELEKTRONIK TERBAIK" WITH HORIZONTAL LINES -->
+  <g transform="translate(0, 432)">
+    <!-- Left Flanking Line -->
+    <line x1="45" y1="-7" x2="135" y2="-7" stroke="#0D47A1" stroke-width="3.5" stroke-linecap="round" />
+    
+    <!-- Bold Text -->
+    <text x="250" y="0" 
+          text-anchor="middle" 
+          font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" 
+          font-size="22" 
+          font-weight="900" 
+          fill="#0D47A1" 
+          letter-spacing="2.5">
+      ELEKTRONIK TERBAIK
+    </text>
+    
+    <!-- Right Flanking Line -->
+    <line x1="365" y1="-7" x2="455" y2="-7" stroke="#0D47A1" stroke-width="3.5" stroke-linecap="round" />
+  </g>
+
+  <!-- 8. BOTTOM KICKER: "-SPESIALIS PENDINGIN DAN MESIN ELEKTRONIK-" -->
+  <text x="250" y="456" 
+        text-anchor="middle" 
+        font-family="'Orbitron', 'Chakra Petch', system-ui, -apple-system, sans-serif" 
+        font-size="12.5" 
+        font-weight="800" 
+        fill="#102A43" 
+        letter-spacing="0.8">
+    -SPESIALIS PENDINGIN DAN MESIN ELEKTRONIK-
+  </text>
+</svg>
