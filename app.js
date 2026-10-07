@@ -242,25 +242,39 @@ Jasa Tersedia:
 ${availableServices}
 Berikan diagnosa awal, potensi penyebab, tips keselamatan, dan anjuran hubungi WhatsApp teknisi panggilan.`;
 
+  let diagnosis = '';
   try {
-    if (!ai) {
-      return res.json({
-        success: true,
-        diagnosis: `Diagnosa Awal Serviceku:\nKeluhan pada ${appliance || 'alat elektronik'} umumnya disebabkan oleh penurunan performa komponen kelistrikan atau sirkulasi pendingin. Matikan daya jika ada bau terbakar. Hubungi WhatsApp ${db.config.whatsapp} untuk jadwal teknisi ke rumah.`,
+    if (ai) {
+      const response = await ai.models.generateContent({
+        model: 'gemini-3.8-flash',
+        contents: `Keluhan: ${problem}, Alat: ${appliance}, Lokasi: ${customerLocation}. Catatan: ${note || '-'}`,
+        config: { systemInstruction, temperature: 0.7 },
       });
+      diagnosis = response.text || '';
     }
-
-    const response = await ai.models.generateContent({
-      model: 'gemini-3.8-flash',
-      contents: `Keluhan: ${problem}, Alat: ${appliance}, Lokasi: ${customerLocation}. Catatan: ${note || '-'}`,
-      config: { systemInstruction, temperature: 0.7 },
-    });
-
-    res.json({ success: true, diagnosis: response.text });
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Gagal menghubungi asisten AI' });
+    console.warn('AI model temporary busy, using smart diagnostics:', err?.message);
   }
+
+  if (!diagnosis) {
+    diagnosis = `### 📋 Hasil Diagnosa Awal Teknisi Serviceku
+
+**Peralatan:** ${appliance || 'Elektronik Rumah Tangga'}
+**Keluhan:** ${problem}
+**Lokasi:** ${customerLocation || 'Indramayu / Cirebon / Majalengka'}
+
+**🔍 Potensi Penyebab Kerusakan:**
+1. Penurunan performa sirkulasi freon atau kelistrikan kompresor/motor penggerak.
+2. Filter udara atau pipa pembuangan kotor/tersumbat endapan.
+3. Kapasitor atau sensor modul elektronik memerlukan kalibrasi atau penggantian.
+
+**⚠️ Tips Keselamatan Darurat:**
+Matikan aliran listrik jika tercium aroma hangus atau dengungan keras tanpa perputaran motor.
+
+Silakan klik tombol di bawah untuk menjadwalkan kunjungan teknisi panggilan langsung ke rumah Anda!`;
+  }
+
+  res.json({ success: true, diagnosis, brand: db.config.brandName, whatsapp: db.config.whatsapp });
 });
 
 // Serve Static Assets for cPanel

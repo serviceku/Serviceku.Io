@@ -122,13 +122,17 @@ export const BannerSlider: React.FC<BannerSliderProps> = ({
 
             {/* CTAs */}
             <div className="flex flex-wrap items-center gap-3 pt-2">
-              <button
-                onClick={() => handleWhatsAppBooking(currentBanner)}
+              <a
+                href={`https://wa.me/${APP_CONFIG.contact.whatsappRaw}?text=${encodeURIComponent(
+                  `Halo Serviceku, saya melihat promo "${currentBanner.title}". Saya ingin memesan teknisi panggilan untuk layanan ${currentBanner.serviceCategory || 'elektronik'} ke rumah saya.`
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#25D366] text-white font-bold text-sm shadow-lg shadow-emerald-950/40 hover:bg-[#20ba5a] hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
               >
                 <PhoneCall className="w-4 h-4 fill-current" />
                 <span>{currentBanner.ctaText || 'Pesan Teknisi Sekarang'}</span>
-              </button>
+              </a>
 
               <a
                 href="#katalog"

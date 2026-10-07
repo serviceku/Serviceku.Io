@@ -153,13 +153,17 @@ Mohon konfirmasi ketersediaan jadwal teknisi terdekat di wilayah Indramayu / Cir
             >
               Tutup
             </button>
-            <button
-              onClick={handleWhatsAppBooking}
+            <a
+              href={`https://wa.me/${APP_CONFIG.contact.whatsappRaw}?text=${encodeURIComponent(
+                `Halo Admin Serviceku, saya ingin konsultasi dan booking teknisi panggilan ke rumah saya untuk: *${service.name}* (${service.priceFormatted}). Mohon konfirmasi ketersediaan jadwal teknisi terdekat di wilayah Indramayu / Cirebon / Majalengka. Terima kasih.`
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 py-2.5 text-xs font-bold text-white bg-[#25D366] hover:bg-[#20ba5a] rounded-xl shadow-md transition-all cursor-pointer"
             >
               <Phone className="w-4 h-4 fill-current" />
               <span>Chat WhatsApp (+62 878-7441-7978)</span>
-            </button>
+            </a>
           </div>
         </div>
       </div>

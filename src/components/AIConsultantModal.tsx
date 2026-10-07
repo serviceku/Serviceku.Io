@@ -280,13 +280,25 @@ Mohon bantuan untuk penjadwalan teknisi panggilan ke alamat saya. Terima kasih.`
                   </div>
                 </div>
 
-                <button
-                  onClick={handleForwardToWhatsApp}
+                <a
+                  href={`https://wa.me/${APP_CONFIG.contact.whatsappRaw}?text=${encodeURIComponent(
+                    `Halo Teknisi Serviceku, saya baru saja konsultasi analisa kerusakan via website:
+*Alat:* ${appliance}
+*Keluhan:* ${problem}
+*Lokasi:* ${customerLocation}
+
+*Hasil Diagnosa AI Serviceku:*
+${diagnosis ? diagnosis.slice(0, 450) + '...' : ''}
+
+Mohon bantuan untuk penjadwalan teknisi panggilan ke alamat saya. Terima kasih.`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-[#25D366] text-white font-bold text-xs sm:text-sm hover:bg-[#20ba5a] shadow-md transition-all cursor-pointer"
                 >
                   <Phone className="w-4 h-4 fill-current" />
                   <span>Kirim Diagnosa ke WhatsApp (+62 878-7441-7978)</span>
-                </button>
+                </a>
               </div>
             </div>
           )}

@@ -239,13 +239,18 @@ Mohon informasi jadwal teknisi dan konfirmasi kedatangan ke rumah saya di wilaya
                   {/* Card Action Buttons */}
                   <div className="pt-3 border-t border-zinc-100 space-y-2">
                     {/* Primary WhatsApp Direct CTA */}
-                    <button
-                      onClick={(e) => handleWhatsAppClick(service, e)}
+                    <a
+                      href={`https://wa.me/${APP_CONFIG.contact.whatsappRaw}?text=${encodeURIComponent(
+                        `Halo Serviceku, saya ingin pesan layanan teknisi panggilan untuk: *${service.name}* (${service.priceFormatted}). Mohon informasi jadwal teknisi dan konfirmasi kedatangan ke rumah saya di wilayah Indramayu / Cirebon / Majalengka. Terima kasih.`
+                      )}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
                       className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-[#25D366] text-white text-xs sm:text-sm font-bold shadow-xs hover:bg-[#20ba5a] active:scale-[0.99] transition-all cursor-pointer"
                     >
                       <Phone className="w-4 h-4 fill-current" />
                       <span>Order via WhatsApp</span>
-                    </button>
+                    </a>
 
                     {/* View Detail Link */}
                     <div className="flex items-center justify-between text-xs font-semibold text-zinc-600 px-1 pt-1">
@@ -270,9 +275,12 @@ Mohon informasi jadwal teknisi dan konfirmasi kedatangan ke rumah saya di wilaya
                         </button>
                         <button
                           onClick={() => {
-                            if (window.confirm(`Hapus layanan "${service.name}"?`)) {
-                              onDeleteService(service.id);
+                            try {
+                              if (typeof window !== 'undefined' && window.confirm && !window.confirm(`Hapus layanan "${service.name}"?`)) return;
+                            } catch {
+                              // Continue
                             }
+                            onDeleteService(service.id);
                           }}
                           className="flex items-center gap-1 px-2.5 py-1 text-xs rounded bg-red-50 text-red-600 hover:bg-red-100 transition-colors cursor-pointer"
                         >

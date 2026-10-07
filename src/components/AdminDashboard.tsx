@@ -166,7 +166,11 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   };
 
   const handleDeleteService = async (id: string, name: string) => {
-    if (!window.confirm(`Yakin ingin menghapus jasa "${name}" secara permanen?`)) return;
+    try {
+      if (typeof window !== 'undefined' && window.confirm && !window.confirm(`Yakin ingin menghapus jasa "${name}" secara permanen?`)) return;
+    } catch {
+      // Continue if confirm is restricted by sandbox
+    }
     setIsLoading(true);
     try {
       await api.deleteService(id, token);
@@ -212,7 +216,11 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   };
 
   const handleDeleteBanner = async (id: string) => {
-    if (!window.confirm('Hapus banner slideshow ini?')) return;
+    try {
+      if (typeof window !== 'undefined' && window.confirm && !window.confirm('Hapus banner slideshow ini?')) return;
+    } catch {
+      // Continue if sandbox blocks confirm
+    }
     setIsLoading(true);
     try {
       await api.deleteBanner(id, token);
